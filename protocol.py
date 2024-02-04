@@ -1,21 +1,18 @@
-from abc import ABC , abstractmethod
+from typing import Protocol
 import os
 import random
 
-class CreatureBase(ABC):
-    @abstractmethod
-    def hp(self):
+class CreatureBase(Protocol):
+    def hp(self)->None:
         pass
     
-    @abstractmethod
-    def ac(self):
+    def ac(self)->None:
         pass
 
-    @abstractmethod
-    def printStats(self):
+    def printStats(self)->None:
         pass
 
-class PlayerCharacter(CreatureBase):
+class PlayerCharacter:
     def __init__(self)->None:
         self.hp()
         self.ac()
@@ -29,7 +26,7 @@ class PlayerCharacter(CreatureBase):
     def printStats(self)->None:
         print("Player HP:",self.hp, ",", "Player AC:",self.ac)
 
-class EnemyCharacter(CreatureBase):
+class EnemyCharacter:
     def __init__(self)->None:
         self.hp()
         self.ac()
